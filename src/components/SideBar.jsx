@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function SideBar() {
     return (
         <>
@@ -51,6 +53,18 @@ function SideBar() {
                                     </ul>
                                 </div>
                             </li>
+
+                            <li className="nav-item">
+                                <Link to="/orders" href="widgets.html">
+                                    <p>Orders</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/products" href="widgets.html">
+                                    <p>Products</p>
+                                </Link>
+                            </li>
+
                             <li className="nav-section">
                                 <span className="sidebar-mini-icon">
                                     <i className="fa fa-ellipsis-h" />
