@@ -51,7 +51,7 @@ function Order() {
                             <div className="card">
 
                                 <div className="card-body">
-                                    <table className="table table-hover">
+                                    <table className="table table-hover ">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -66,14 +66,24 @@ function Order() {
                                             {
                                                 orderData?.map((item, index) => (
                                                     <>
-                                                        <tr>
-                                                            <td></td>
+                                                        <tr key={index}>
+                                                            <td>{index+1}.</td>
                                                             <td>{item.name}</td>
                                                             <td>
-                                                                <b>Address:</b><br /> {item.address}<br /><hr />
-                                                                <b>Postcode:</b><br /> {item.postcode}<br /><hr />
-                                                                <b>Mobile:</b><br /> {item.mobile}<br /><hr />
-                                                                <b>Email:</b><br /> {item.email}
+                                                                <div className='row'>
+                                                                    <div className='col-sm-6'>
+                                                                        <div className='detail_box'>
+                                                                            <span className='detail_item'><b>Email:</b> {item.email}</span>
+                                                                            <span className='detail_item'><b>Postcode:</b> {item.postcode}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='col-sm-6'>
+                                                                        <div className='detail_box'>
+                                                                            <span className='detail_item'><b>Mobile:</b> {item.mobile}</span>
+                                                                            <span className='detail_item'><b>Address:</b>{item.address}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                             <td>{
 
@@ -89,8 +99,10 @@ function Order() {
                                                             </td>
                                                             <td></td>
                                                             <td>
-                                                                <button class="btn btn-sm btn-success">Approve</button>
-                                                                <button class="btn btn-sm btn-danger">Cancel</button>
+                                                                <div className='button_box'>
+                                                                    <button class="btn btn-success btn-border">Approve</button>
+                                                                    <button class="btn btn-danger btn-border">Cancel</button>
+                                                                </div>
                                                             </td>
                                                         </tr >
                                                     </>

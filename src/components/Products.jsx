@@ -2,6 +2,7 @@ import Header from './Header'
 import SideBar from './SideBar'
 import Footer from './Footer'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function Products() {
 
@@ -64,11 +65,11 @@ function Products() {
                                             {
                                                 productData?.map((item, index) => (
                                                     <>
-                                                        <tr>
-                                                            <td>{item.id}</td>
+                                                        <tr key={index}>
+                                                            <td>{item.id}.</td>
                                                             <td>{item.name}</td>
-                                                            <td>{item.price}</td>
-                                                            <td></td>
+                                                            <td>${item.price}</td>
+                                                            <td><Link to={`/product-edit/${item.id}`} class="btn btn-primary btn-border">Edit</Link></td>
                                                         </tr >
                                                     </>
                                                 ))
