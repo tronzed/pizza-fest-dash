@@ -89,40 +89,38 @@ function ProductDetail() {
                             <form onSubmit={editData}>
                                 <div className="card">
                                     <div className="card-body">
-                                        <form action="">
-                                            <div className='row'>
-                                                <div className='col-sm-6'>
-                                                    <div class="form-group form-inline">
-                                                        <label for="inlineinput" class="col-form-label">Name</label>
-                                                        <input type="text" class="form-control input-full" value={editName} onChange={(e) => setEditName(e.target.value)} id="inlineinput" placeholder="Enter Name" />
-                                                    </div>
+                                        <div className='row'>
+                                            <div className='col-sm-6'>
+                                                <div className="form-group form-inline">
+                                                    <label for="inlineinput" className="col-form-label">Name</label>
+                                                    <input type="text" className="form-control input-full" value={editName} onChange={(e) => setEditName(e.target.value)} id="inlineinput" placeholder="Enter Name" />
                                                 </div>
-                                                <div className='col-sm-6'>
-                                                    <div class="form-group form-inline">
-                                                        <label for="inlineinput" class="col-form-label">Price</label>
-                                                        <input value={editPrice} type="number" class="form-control input-full" onChange={(e) => setEditPrice(e.target.value)} id="inlineinput" placeholder="Enter Price" />
-                                                    </div>
+                                            </div>
+                                            <div className='col-sm-6'>
+                                                <div className="form-group form-inline">
+                                                    <label for="inlineinput" className="col-form-label">Price</label>
+                                                    <input value={editPrice} type="number" className="form-control input-full" onChange={(e) => setEditPrice(e.target.value)} id="inlineinput" placeholder="Enter Price" />
                                                 </div>
-                                                <div className='col-sm-12'>
-                                                    <div class="form-group form-inline">
-                                                        <label for="inlineinput" class="col-form-label">Detail</label>
-                                                        <textarea value={editText} class="form-control" id="comment" onChange={(e) => setEditText(e.target.value)} rows="5"></textarea>
-                                                    </div>
+                                            </div>
+                                            <div className='col-sm-12'>
+                                                <div className="form-group form-inline">
+                                                    <label for="inlineinput" className="col-form-label">Detail</label>
+                                                    <textarea value={editText} className="form-control" id="comment" onChange={(e) => setEditText(e.target.value)} rows="5"></textarea>
                                                 </div>
-                                                {/* <div className='col-sm-6'>
-                                                <div class="form-group form-inline">
-                                                    <label for="inlineinput" class="col-form-label">Detail</label>
-                                                    <input type="file" class="form-control-file"></input>
+                                            </div>
+                                            {/* <div className='col-sm-6'>
+                                                <div className="form-group form-inline">
+                                                    <label for="inlineinput" className="col-form-label">Detail</label>
+                                                    <input type="file" className="form-control-file"></input>
                                                 </div>
                                             </div> */}
 
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                    <div class="card-action">
+                                    <div className="card-action">
                                         <div className='button_box'>
-                                            <button type='submit' class="btn btn-success">Submit</button>
-                                            <button class="btn btn-danger">Cancel</button>
+                                            <button type='submit' className="btn btn-success">Submit</button>
+                                            <button className="btn btn-danger">Cancel</button>
                                         </div>
                                     </div>
                                 </div>
