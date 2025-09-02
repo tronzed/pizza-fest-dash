@@ -1,55 +1,41 @@
 import Header from './Header'
 import SideBar from './SideBar'
 import Footer from './Footer'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useState } from 'react'
 import Loader from './Loader';
+import { useNavigate } from 'react-router-dom';
 
-function ProductDetail() {
+function AddProduct() {
 
-    const [editName, setEditName] = useState();
-    const [editPrice, setEditPrice] = useState();
-    const [editText, setEditText] = useState();
-    const [LoaderShow, setLoaderShow] = useState(true);
+    const [names, setName] = useState();
+    const [prices, setPrice] = useState();
+    const [texts, setText] = useState();
 
-    const { id } = useParams();
+    const [LoaderShow, setLoaderShow] = useState(false);
 
-    const getProduct = async () => {
-        const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
-        const data = await res.json();
-        const data2 = Object.values(data);
-        const data3 = data2.find((item) => item.id == id);
+    const navigate = useNavigate();
 
-        setEditName(data3?.name);
-        setEditPrice(data3?.price);
-        setEditText(data3?.text);
-        setLoaderShow(false)
-    }
 
-    const editData = (e) => {
+    const addData = (e) => {
 
         e.preventDefault();
 
-        // let id = editText;
-        let name = editName;
-        let price = editPrice;
-        let text = editText;
+        let name = names;
+        let price = prices;
+        let text = texts;
 
-        const data = { id, name, price, text };
+        const data = { 'id:':'22', name, price, text };
 
-        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${id - 1}.json`, {
-            method: 'PUT',
+        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json`, {
+            method: 'POST',
             header: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         }).then(() => {
-            setLoaderShow(true)
-            getProduct();
+            navigate('/products-list')
+            // setLoaderShow(true)
         });
     }
 
-    useEffect(() => {
-        getProduct();
-    }, [])
 
     return (
         <>
@@ -61,7 +47,7 @@ function ProductDetail() {
                 <div className="container">
                     <div className="page-inner">
                         <div className="page-header">
-                            <h4 className="page-title">Products</h4>
+                            <h4 className="page-title">Add Products</h4>
                             <ul className="breadcrumbs">
                                 <li className="nav-home">
                                     <a href="#">
@@ -72,40 +58,36 @@ function ProductDetail() {
                                     <i className="icon-arrow-right" />
                                 </li>
                                 <li className="nav-item">
-                                    <a href="#">Products</a>
+                                    <a href="#">Add Products</a>
                                 </li>
                             </ul>
                         </div>
                         <div className="page-category">
 
-
                             {LoaderShow && (
-
                                 <Loader />
-
                             )}
 
-
-                            <form onSubmit={editData}>
+                            <form onSubmit={addData}>
                                 <div className="card">
                                     <div className="card-body">
                                         <div className='row'>
                                             <div className='col-sm-6'>
                                                 <div className="form-group form-inline">
                                                     <label for="inlineinput" className="col-form-label">Name</label>
-                                                    <input type="text" className="form-control input-full" value={editName} onChange={(e) => setEditName(e.target.value)} id="inlineinput" placeholder="Enter Name" />
+                                                    <input type="text" className="form-control input-full" onChange={(e) => setName(e.target.value)} id="inlineinput" placeholder="Enter Name" />
                                                 </div>
                                             </div>
                                             <div className='col-sm-6'>
                                                 <div className="form-group form-inline">
                                                     <label for="inlineinput" className="col-form-label">Price</label>
-                                                    <input value={editPrice} type="number" className="form-control input-full" onChange={(e) => setEditPrice(e.target.value)} id="inlineinput" placeholder="Enter Price" />
+                                                    <input type="number" className="form-control input-full" onChange={(e) => setPrice(e.target.value)} id="inlineinput" placeholder="Enter Price" />
                                                 </div>
                                             </div>
                                             <div className='col-sm-12'>
                                                 <div className="form-group form-inline">
                                                     <label for="inlineinput" className="col-form-label">Detail</label>
-                                                    <textarea value={editText} className="form-control" id="comment" onChange={(e) => setEditText(e.target.value)} rows="5"></textarea>
+                                                    <textarea className="form-control" id="comment" onChange={(e) => setText(e.target.value)} rows="5"></textarea>
                                                 </div>
                                             </div>
                                             {/* <div className='col-sm-6'>
@@ -136,4 +118,4 @@ function ProductDetail() {
     );
 }
 
-export default ProductDetail;
+export default AddProduct;

@@ -4,7 +4,7 @@ import Footer from './Footer'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
-function Products() {
+function ProductsList() {
 
     const [productData, setProduct] = useState();
 
@@ -21,9 +21,6 @@ function Products() {
 
     return (
         <>
-
-            {console.log(productData, 'asdasdw')}
-
             <SideBar />
             <div className="main-panel">
                 <Header />
@@ -48,7 +45,9 @@ function Products() {
                         </div>
                         <div className="page-category">
 
-
+                            <div className='add_box'>
+                                <Link to="/add-product" class="btn btn-primary">Add New</Link>
+                            </div>
                             <div className="card">
 
                                 <div className="card-body">
@@ -90,4 +89,4 @@ function Products() {
     );
 }
 
-export default Products;
+export default ProductsList;
