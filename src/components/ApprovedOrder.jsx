@@ -4,7 +4,7 @@ import Footer from './Footer'
 import { useEffect, useState } from 'react'
 import firebase from 'firebase/compat/app';
 
-function Order() {
+function ApprovedOrder() {
 
     const [orderData, setOrderData] = useState();
 
@@ -16,31 +16,12 @@ function Order() {
             'firebaseId': key,
             ...value
         }))
-        setOrderData(data2);
+
+        const data3 = data2?.filter((item) => item?.approved == true);
+
+        setOrderData(data3);
     }
 
-    const approveOrder = async (id) => {
-        const data = { 'approved': true }
-        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/orders/${id}.json`, {
-            method: 'PATCH',
-            header: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).then(() => {
-            console.log('approved');
-        })
-    }
-
-
-    const cancelOrder = async (id) => {
-        const data = { 'approved': false }
-        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/orders/${id}.json`, {
-            method: 'PATCH',
-            header: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).then(() => {
-            console.log('approved');
-        })
-    }
 
     useEffect(() => {
         getOrder();
@@ -48,6 +29,9 @@ function Order() {
 
     return (
         <>
+
+            {console.log(orderData, '--------orderData--------')}
+
             <SideBar />
             <div className="main-panel">
                 <Header />
@@ -84,7 +68,6 @@ function Order() {
                                                 <th scope="col">Details</th>
                                                 <th scope="col">items</th>
                                                 <th scope="col">Total</th>
-                                                <th scope="col">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -114,21 +97,13 @@ function Order() {
 
                                                                 item?.cartBox?.map((box, index) => (
                                                                     <>
-
                                                                         <p>{box?.name}</p>
-
                                                                     </>
                                                                 ))
 
                                                             }
                                                             </td>
                                                             <td></td>
-                                                            <td>
-                                                                <div className='button_box'>
-                                                                    <button class="btn btn-success btn-border" onClick={() => approveOrder(item?.firebaseId)}>Approve</button>
-                                                                    <button class="btn btn-danger btn-border" onClick={() => cancelOrder(item?.firebaseId)}>Cancel</button>
-                                                                </div>
-                                                            </td>
                                                         </tr >
                                                     </>
                                                 ))
@@ -149,4 +124,4 @@ function Order() {
     );
 }
 
-export default Order;
+export default ApprovedOrder;

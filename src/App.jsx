@@ -5,6 +5,8 @@ import Order from './components/Order'
 import ProductsList from './components/ProductsList'
 import ProductEdit from './components/ProductEdit'
 import AddProduct from './components/AddProducts'
+import ApprovedOrder from './components/ApprovedOrder'
+import CancelOrder from './components/CancelOrder'
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/orders" element={<Order />} />
           <Route path="/products-list" element={<ProductsList />} />
+          <Route path="/approved-order" element={<ApprovedOrder />} />
+          <Route path="/cancel-order" element={<CancelOrder />} />
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/product-edit/:id" element={<ProductEdit />} />
         </Routes>

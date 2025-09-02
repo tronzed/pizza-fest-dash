@@ -55,22 +55,22 @@ function SideBar() {
                             </li>
 
                             <li className="nav-item">
-                                <Link to="/orders" href="widgets.html">
+                                <Link to="/orders">
                                     <p>Orders</p>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/products-list" href="widgets.html">
+                                <Link to="/products-list" >
                                     <p>Products</p>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/" href="widgets.html">
-                                    <p>Ready Order</p>
+                                <Link to="/approved-order">
+                                    <p>Approve Order</p>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/" href="widgets.html">
+                                <Link to="/cancel-order">
                                     <p>Canceled Order</p>
                                 </Link>
                             </li>
