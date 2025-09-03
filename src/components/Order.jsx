@@ -29,7 +29,8 @@ function Order() {
             header: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         }).then(() => {
-            console.log('approved');
+            getOrder();
+            setLoader(false);
         })
     }
 
@@ -41,7 +42,8 @@ function Order() {
             header: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         }).then(() => {
-            console.log('approved');
+            getOrder();
+            setLoader(false);
         })
     }
 
@@ -59,8 +61,6 @@ function Order() {
                     {loader && (
                         <Loader />
                     )}
-
-                    {console.log(orderData, '----------orderData-------------')}
 
                     <div className="container">
                         <div className="page-inner">
@@ -121,15 +121,11 @@ function Order() {
                                                                     </div>
                                                                 </td>
                                                                 <td>{
-
                                                                     item?.cartBox?.map((box, index) => (
                                                                         <>
-
                                                                             <p>{box?.name}</p>
-
                                                                         </>
                                                                     ))
-
                                                                 }
                                                                 </td>
                                                                 <td></td>
@@ -147,8 +143,8 @@ function Order() {
 
                                                                             ) : (
                                                                                 <>
-                                                                                    <button class="btn btn-success btn-border" onClick={() => approveOrder(item?.firebaseId)}>Approve</button>
-                                                                                    <button class="btn btn-danger btn-border" onClick={() => cancelOrder(item?.firebaseId)}>Cancel</button>
+                                                                                    <button class="btn btn-success btn-border" onClick={() => {setLoader(true); approveOrder(item?.firebaseId);}}>Approve</button>
+                                                                                    <button class="btn btn-danger btn-border" onClick={() => {setLoader(true); cancelOrder(item?.firebaseId);}}>Cancel</button>
                                                                                 </>
                                                                             )
 

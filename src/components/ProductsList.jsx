@@ -9,6 +9,8 @@ function ProductsList() {
 
     const [productData, setProduct] = useState();
     const [loader, setLoader] = useState(true);
+    const [checked, setChecked] = useState(false);
+
 
     const getProduct = async () => {
         const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
@@ -16,6 +18,20 @@ function ProductsList() {
         const data2 = Object.values(data);
         setProduct(data2);
         setLoader(false);
+    }
+
+    function addBestSeller(state, id) {
+
+        const data = { 'bestSeller': state }
+
+        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${id - 1}.json`, {
+            method: 'PATCH',
+            header: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        }).then(()=>{
+            getProduct();
+        })
+
     }
 
     useEffect(() => {
@@ -65,6 +81,7 @@ function ProductsList() {
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Price</th>
+                                                    <th scope="col">Bestseller</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
@@ -76,6 +93,17 @@ function ProductsList() {
                                                                 <td>{item.id}.</td>
                                                                 <td>{item.name}</td>
                                                                 <td>${item.price}</td>
+                                                                <td>
+                                                                    <div className="form-check form-switch">
+                                                                        <input
+                                                                            onChange={(e) => addBestSeller(e.target.checked, item.id)}
+                                                                            checked={item.bestSeller}
+                                                                            className="form-check-input"
+                                                                            type="checkbox"
+                                                                            role="switch"
+                                                                        />
+                                                                    </div>
+                                                                </td>
                                                                 <td><Link to={`/product-edit/${item.id}`} class="btn btn-primary btn-border">Edit</Link></td>
                                                             </tr >
                                                         </>
