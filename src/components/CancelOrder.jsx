@@ -3,10 +3,12 @@ import SideBar from './SideBar'
 import Footer from './Footer'
 import { useEffect, useState } from 'react'
 import firebase from 'firebase/compat/app';
+import Loader from './Loader';
 
 function CancelOrder() {
 
     const [orderData, setOrderData] = useState();
+    const [loader, setLoader] = useState(true);
 
     const getOrder = async () => {
         const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/orders.json');
@@ -18,8 +20,8 @@ function CancelOrder() {
         }))
 
         const data3 = data2?.filter((item) => item?.approved == false);
-
         setOrderData(data3);
+        setLoader(false);
     }
 
 
@@ -30,16 +32,18 @@ function CancelOrder() {
     return (
         <>
 
-            {console.log(orderData, '--------orderData--------')}
-
             <SideBar />
             <div className="main-panel">
                 <Header />
 
+                {loader && (
+                    <Loader />
+                )}
+
                 <div className="container">
                     <div className="page-inner">
                         <div className="page-header">
-                            <h4 className="page-title">Orders</h4>
+                            <h4 className="page-title">Canceled Order</h4>
                             <ul className="breadcrumbs">
                                 <li className="nav-home">
                                     <a href="#">
@@ -50,16 +54,16 @@ function CancelOrder() {
                                     <i className="icon-arrow-right" />
                                 </li>
                                 <li className="nav-item">
-                                    <a href="#">Orders</a>
+                                    <a href="#">Canceled Order</a>
                                 </li>
                             </ul>
                         </div>
                         <div className="page-category">
 
 
-                            <div className="card">
+                            <div className="card table-responsive">
 
-                                <div className="card-body">
+                                <div className="card-body table-responsive">
                                     <table className="table table-hover ">
                                         <thead>
                                             <tr>

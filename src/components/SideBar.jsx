@@ -8,12 +8,7 @@ function SideBar() {
                     {/* Logo Header */}
                     <div className="logo-header" data-background-color="dark">
                         <a href="index.html" className="logo">
-                            <img
-                                src="/assets/img/kaiadmin/logo_light.svg"
-                                alt="navbar brand"
-                                className="navbar-brand"
-                                height={20}
-                            />
+                            Pizza-Fest
                         </a>
                         <div className="nav-toggle">
                             <button className="btn btn-toggle toggle-sidebar">

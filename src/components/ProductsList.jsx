@@ -3,16 +3,19 @@ import SideBar from './SideBar'
 import Footer from './Footer'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 
 function ProductsList() {
 
     const [productData, setProduct] = useState();
+    const [loader, setLoader] = useState(true);
 
     const getProduct = async () => {
         const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
         const data = await res.json();
         const data2 = Object.values(data);
         setProduct(data2);
+        setLoader(false);
     }
 
     useEffect(() => {
@@ -24,6 +27,10 @@ function ProductsList() {
             <SideBar />
             <div className="main-panel">
                 <Header />
+
+                {loader && (
+                    <Loader />
+                )}
 
                 <div className="container">
                     <div className="page-inner">
@@ -50,7 +57,7 @@ function ProductsList() {
                             </div>
                             <div className="card">
 
-                                <div className="card-body">
+                                <div className="card-body table-responsive">
                                     <table className="table table-hover">
                                         <thead>
                                             <tr>

@@ -3,10 +3,12 @@ import SideBar from './SideBar'
 import Footer from './Footer'
 import { useEffect, useState } from 'react'
 import firebase from 'firebase/compat/app';
+import Loader from './Loader';
 
 function Order() {
 
     const [orderData, setOrderData] = useState();
+    const [loader, setLoader] = useState(true);
 
     const getOrder = async () => {
         const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/orders.json');
@@ -17,6 +19,7 @@ function Order() {
             ...value
         }))
         setOrderData(data2);
+        setLoader(false);
     }
 
     const approveOrder = async (id) => {
@@ -51,6 +54,12 @@ function Order() {
             <SideBar />
             <div className="main-panel">
                 <Header />
+
+                {loader && (
+                    <Loader />
+                )}
+
+                {console.log(orderData, '----------orderData-------------')}
 
                 <div className="container">
                     <div className="page-inner">
@@ -125,8 +134,25 @@ function Order() {
                                                             <td></td>
                                                             <td>
                                                                 <div className='button_box'>
-                                                                    <button class="btn btn-success btn-border" onClick={() => approveOrder(item?.firebaseId)}>Approve</button>
-                                                                    <button class="btn btn-danger btn-border" onClick={() => cancelOrder(item?.firebaseId)}>Cancel</button>
+
+                                                                    {
+
+                                                                        item?.approved === true ? (
+
+                                                                            <button class="btn btn-success btn-border">Approved</button>
+
+                                                                        ) : item?.approved === false ? (
+                                                                            <button class="btn btn-danger btn-border">Canceled</button>
+
+                                                                        ) : (
+                                                                            <>
+                                                                                <button class="btn btn-success btn-border" onClick={() => approveOrder(item?.firebaseId)}>Approve</button>
+                                                                                <button class="btn btn-danger btn-border" onClick={() => cancelOrder(item?.firebaseId)}>Cancel</button>
+                                                                            </>
+                                                                        )
+
+                                                                    }
+
                                                                 </div>
                                                             </td>
                                                         </tr >

@@ -7,7 +7,7 @@ function Header() {
                     <div className="logo-header" data-background-color="dark">
                         <a href="index.html" className="logo">
                             <img
-                                src="/assets/img/kaiadmin/logo_light.svg"
+                                src="/assets/img/kaiadmin/logo_01.png"
                                 alt="navbar brand"
                                 className="navbar-brand"
                                 height={20}
