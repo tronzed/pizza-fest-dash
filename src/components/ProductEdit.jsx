@@ -78,13 +78,9 @@ function ProductEdit() {
                         </div>
                         <div className="page-category">
 
-
                             {LoaderShow && (
-
                                 <Loader />
-
                             )}
-
 
                             <form onSubmit={editData}>
                                 <div className="card">
