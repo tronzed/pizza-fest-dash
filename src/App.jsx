@@ -7,6 +7,8 @@ import ProductEdit from './components/ProductEdit'
 import AddProduct from './components/AddProducts'
 import ApprovedOrder from './components/ApprovedOrder'
 import CancelOrder from './components/CancelOrder'
+import Bestseller from './components/BestSeller'
+import SiteDetail from './components/SiteDetail'
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
           <Route path="/approved-order" element={<ApprovedOrder />} />
           <Route path="/cancel-order" element={<CancelOrder />} />
           <Route path="/add-product" element={<AddProduct />} />
+          <Route path="/best-seller" element={<Bestseller />} />
+          <Route path="/site-detail" element={<SiteDetail />} />
           <Route path="/product-edit/:id" element={<ProductEdit />} />
         </Routes>
       </BrowserRouter>
