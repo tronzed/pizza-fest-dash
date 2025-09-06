@@ -9,6 +9,7 @@ import ApprovedOrder from './components/ApprovedOrder'
 import CancelOrder from './components/CancelOrder'
 import Bestseller from './components/BestSeller'
 import SiteDetail from './components/SiteDetail'
+import CloudBox from './components/CloudBox'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/best-seller" element={<Bestseller />} />
           <Route path="/site-detail" element={<SiteDetail />} />
+          <Route path="/up-box" element={<CloudBox />} />
           <Route path="/product-edit/:id" element={<ProductEdit />} />
         </Routes>
       </BrowserRouter>

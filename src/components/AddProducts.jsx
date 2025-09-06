@@ -10,28 +10,53 @@ function AddProduct() {
     const [names, setName] = useState();
     const [prices, setPrice] = useState();
     const [texts, setText] = useState();
-
     const [LoaderShow, setLoaderShow] = useState(false);
+
+    const [image, setImage] = useState();
+    const [imgUrl, setImgUrl] = useState();
 
     const navigate = useNavigate();
 
-
-    const addData = (e) => {
+    const addData = async (e) => {
 
         e.preventDefault();
+
+
+        const formData = new FormData();
+
+        formData.append("file", image);
+        formData.append("upload_preset", "tron_file_zed");
+        formData.append("cloud_name", "dyxkr50bl");
+
+
+        const res = await fetch(
+            "https://api.cloudinary.com/v1_1/dyxkr50bl/image/upload",
+            {
+                method: "POST",
+                body: formData,
+            }
+        );
+
+
+        const uploadURl = await res.json();
+
+        setImgUrl(uploadURl.secure_url);
+
+
 
         let name = names;
         let price = prices;
         let text = texts;
+        let img_url = imgUrl;
 
-        const data = { 'id:': '22', name, price, text };
+        const data = { 'id:': '22', name, price, text, img_url };
 
         fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json`, {
             method: 'POST',
             header: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         }).then(() => {
-            navigate('/products-list')
+            // navigate('/products-list')
             // setLoaderShow(true)
         });
     }
@@ -84,18 +109,21 @@ function AddProduct() {
                                                         <input type="number" className="form-control input-full" onChange={(e) => setPrice(e.target.value)} id="inlineinput" placeholder="Enter Price" />
                                                     </div>
                                                 </div>
-                                                <div className='col-sm-12'>
+                                                <div className='col-sm-6'>
                                                     <div className="form-group form-inline">
                                                         <label for="inlineinput" className="col-form-label">Detail</label>
                                                         <textarea className="form-control" id="comment" onChange={(e) => setText(e.target.value)} rows="5"></textarea>
                                                     </div>
                                                 </div>
-                                                {/* <div className='col-sm-6'>
-                                                <div className="form-group form-inline">
-                                                    <label for="inlineinput" className="col-form-label">Detail</label>
-                                                    <input type="file" className="form-control-file"></input>
+                                                <div className='col-sm-6'>
+                                                    <div className='img_box'>
+                                                        <img src={imgUrl} alt="" />
+                                                    </div>
+                                                    <div className="form-group form-inline">
+                                                        <label for="inlineinput" className="col-form-label">Detail</label>
+                                                        <input type="file" className="form-control-file" onChange={(e)=>setImage(e.target.files[0])}></input>
+                                                    </div>
                                                 </div>
-                                            </div> */}
 
                                             </div>
                                         </div>
