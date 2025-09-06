@@ -19,15 +19,15 @@ function AddProduct() {
 
     const addData = async (e) => {
 
-        e.preventDefault();
+        let varImgUrl = "";
 
+        e.preventDefault();
 
         const formData = new FormData();
 
         formData.append("file", image);
         formData.append("upload_preset", "tron_file_zed");
         formData.append("cloud_name", "dyxkr50bl");
-
 
         const res = await fetch(
             "https://api.cloudinary.com/v1_1/dyxkr50bl/image/upload",
@@ -37,17 +37,15 @@ function AddProduct() {
             }
         );
 
-
         const uploadURl = await res.json();
 
         setImgUrl(uploadURl.secure_url);
-
-
+        varImgUrl = uploadURl.secure_url;
 
         let name = names;
         let price = prices;
         let text = texts;
-        let img_url = imgUrl;
+        let img_url = varImgUrl;
 
         const data = { 'id:': '22', name, price, text, img_url };
 
