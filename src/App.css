@@ -39,3 +39,24 @@
 .logo-header .logo {
     color: #fff;
 }
+.login_box {
+    max-width: 350px;
+    margin: auto;
+}
+.login_cover label {
+    text-align: left;
+    display: block;
+}
+.login_box .card-action .btn {
+    margin-bottom: 10px;
+}
+.login_box .card-action .btn:last-child {
+    margin-bottom: 0;
+}
+.login_cover {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+}

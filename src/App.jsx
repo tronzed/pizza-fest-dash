@@ -11,6 +11,7 @@ import Bestseller from './components/BestSeller'
 import SiteDetail from './components/SiteDetail'
 import CloudBox from './components/CloudBox'
 import Login from './components/Login'
+import SignUp from './components/SignUp'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/site-detail" element={<SiteDetail />} />
           <Route path="/up-box" element={<CloudBox />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/product-edit/:id" element={<ProductEdit />} />
         </Routes>
       </BrowserRouter>

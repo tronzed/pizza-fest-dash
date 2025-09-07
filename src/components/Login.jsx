@@ -1,71 +1,71 @@
 // src/Login.js
 import { useState } from "react";
 import { auth } from "../firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null);
 
-  // Signup
-  const handleSignup = async () => {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      setUser(userCredential.user);
-      alert("Signup successful!");
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+  const navigate = useNavigate();
 
   // Login
   const handleLogin = async () => {
+
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setUser(userCredential.user);
-      alert("Login successful!");
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/');
     } catch (error) {
-      alert(error.message);
+      console.log('login failed', error.message);
     }
   };
 
   // Logout
   const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      setUser(null);
-      alert("Logged out!");
-    } catch (error) {
-      alert(error.message);
-    }
+    await signOut(auth);
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      {user ? (
-        <>
-          <h2>Welcome, {user.email}</h2>
-          <button onClick={handleLogout}>Logout</button>
-        </>
-      ) : (
-        <>
-          <h2>Login / Signup</h2>
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          /><br /><br />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          /><br /><br />
-          <button onClick={handleLogin}>Login</button>
-          <button onClick={handleSignup}>Signup</button>
-        </>
-      )}
-    </div>
+
+    <>
+      <div className="login_cover">
+        <div className="container">
+          <div className="login_box">
+            <div className="card">
+              <div className="card-header">
+                <h2 className="card-title">Login</h2>
+              </div>
+              <div className="card-body">
+
+                <div className="form-group">
+                  <label>Email Address</label>
+                  <input
+                    className="form-control"
+                    type="email"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                <div className="form-group">
+                  <label>Password</label>
+                  <input
+                    className="form-control"
+                    type="password"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)} />
+                </div>
+              </div>
+              <div className="card-action">
+                <button className="w-100 btn btn-success mb-10" onClick={handleLogin}>Login</button>
+                <button className="w-100 btn btn-danger mb-10" onClick={handleLogout}>Logout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+
   );
 }
 
