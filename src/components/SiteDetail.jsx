@@ -72,27 +72,75 @@ function SiteDetail() {
                                     <div className="card">
                                         <div className="card-body">
                                             <div className='row'>
-                                                <div className='col-sm-6'>
+                                                <div className='col-sm-4'>
                                                     <div className="form-group form-inline">
-                                                        <label for="inlineinput" className="col-form-label">Name</label>
-                                                        <input type="text" className="form-control input-full" onChange={(e) => setName(e.target.value)} id="inlineinput" placeholder="Enter Name" />
+                                                        <label for="formFile" class="col-form-label">Store Logo</label>
+                                                        <input class="form-control" type="file" id="formFile"></input>
                                                     </div>
                                                 </div>
-                                                <div className='col-sm-6'>
+                                                <div className='col-sm-4'>
                                                     <div className="form-group form-inline">
-                                                        <label for="inlineinput" className="col-form-label">Price</label>
-                                                        <input type="number" className="form-control input-full" onChange={(e) => setPrice(e.target.value)} id="inlineinput" placeholder="Enter Price" />
+                                                        <label for="inlineinput" className="col-form-label">Email</label>
+                                                        <input type="mail" className="form-control input-full" onChange={(e) => setName(e.target.value)} id="inlineinput" placeholder="Enter Mail" />
                                                     </div>
                                                 </div>
-                                               
-                                                {/* <div className='col-sm-6'>
-                                                <div className="form-group form-inline">
-                                                    <label for="inlineinput" className="col-form-label">Detail</label>
-                                                    <input type="file" className="form-control-file"></input>
+                                                <div className='col-sm-4'>
+                                                    <div className="form-group form-inline">
+                                                        <label for="inlineinput" className="col-form-label">Address</label>
+                                                        <input type="text" className="form-control input-full" onChange={(e) => setPrice(e.target.value)} id="inlineinput" placeholder="Enter Address" />
+                                                    </div>
                                                 </div>
-                                            </div> */}
-
                                             </div>
+                                            <div className='row'>
+                                                <div className='col-sm-4'>
+                                                    <div className="form-group form-inline">
+                                                        <label for="inlineinput" className="col-form-label">Twitter</label>
+                                                        <input type="text" className="form-control input-full" onChange={(e) => setPrice(e.target.value)} id="inlineinput" placeholder="Enter Twitter Link" />
+                                                    </div>
+                                                </div>
+                                                <div className='col-sm-4'>
+                                                    <div className="form-group form-inline">
+                                                        <label for="inlineinput" className="col-form-label">Facebook</label>
+                                                        <input type="text" className="form-control input-full" onChange={(e) => setPrice(e.target.value)} id="inlineinput" placeholder="Enter Facebook Link" />
+                                                    </div>
+                                                </div>
+                                                <div className='col-sm-4'>
+                                                    <div className="form-group form-inline">
+                                                        <label for="inlineinput" className="col-form-label">YouTube</label>
+                                                        <input type="text" className="form-control input-full" onChange={(e) => setPrice(e.target.value)} id="inlineinput" placeholder="Enter YouTube Link" />
+                                                    </div>
+                                                </div>
+                                                <div className='col-sm-4'>
+                                                    <div className="form-group form-inline">
+                                                        <label for="inlineinput" className="col-form-label">Linkedin</label>
+                                                        <input type="text" className="form-control input-full" onChange={(e) => setPrice(e.target.value)} id="inlineinput" placeholder="Enter Linkedin Link" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className='row'>
+                                                <div className='col-sm-4'>
+                                                    <div className="form-group form-inline">
+                                                        <label for="formFile" class="col-form-label">Banner Img</label>
+                                                        <input class="form-control" type="file" id="formFile"></input>
+                                                    </div>
+                                                </div>
+
+                                                <div className='col-sm-4'>
+                                                    <div className="form-group form-inline">
+                                                        <label for="inlineinput" className="col-form-label">Heading</label>
+                                                        <input type="mail" className="form-control input-full" onChange={(e) => setName(e.target.value)} id="inlineinput" placeholder="Enter Banner Heading" />
+                                                    </div>
+                                                </div>
+
+
+                                                <div className='col-sm-4'>
+                                                    <div className="form-group form-inline">
+                                                        <label for="inlineinput" className="col-form-label">Sub Heading</label>
+                                                        <input type="text" className="form-control input-full" onChange={(e) => setPrice(e.target.value)} id="inlineinput" placeholder="Enter Sub Heading" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div className="card-action">
                                             <div className='button_box'>

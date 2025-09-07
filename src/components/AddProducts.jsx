@@ -117,10 +117,12 @@ function AddProduct() {
                                                     <div className='img_box'>
                                                         <img src={imgUrl} alt="" />
                                                     </div>
+
                                                     <div className="form-group form-inline">
-                                                        <label for="inlineinput" className="col-form-label">Detail</label>
-                                                        <input type="file" className="form-control-file" onChange={(e)=>setImage(e.target.files[0])}></input>
+                                                        <label for="inlineinput" className="col-form-label">Product Image</label>
+                                                        <input type="file" className="form-control-file form-control" onChange={(e)=>setImage(e.target.files[0])}></input>
                                                     </div>
+
                                                 </div>
 
                                             </div>
