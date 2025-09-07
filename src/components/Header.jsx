@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 
 function Header() {
 
-
     const navigate = useNavigate();
 
     const logOut = async () => {
@@ -24,7 +23,6 @@ function Header() {
             }
         });
     }
-
 
     useEffect(() => {
         checkLogin();
