@@ -1,7 +1,7 @@
 // src/Login.js
 import { useState } from "react";
 import { auth } from "../firebase";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -22,13 +22,7 @@ function Login() {
     }
   };
 
-  // Logout
-  const handleLogout = async () => {
-    await signOut(auth);
-  };
-
   return (
-
     <>
       <div className="login_cover">
         <div className="container">
@@ -58,7 +52,6 @@ function Login() {
               </div>
               <div className="card-action">
                 <button className="w-100 btn btn-success mb-10" onClick={handleLogin}>Login</button>
-                <button className="w-100 btn btn-danger mb-10" onClick={handleLogout}>Logout</button>
               </div>
             </div>
           </div>

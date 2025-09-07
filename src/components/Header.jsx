@@ -1,4 +1,36 @@
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
+import { signOut,onAuthStateChanged } from 'firebase/auth';
+import { useEffect } from 'react';
+
 function Header() {
+
+
+    const navigate = useNavigate();
+
+    const logOut = async () => {
+        try {
+            await signOut(auth);
+            navigate('/login')
+        } catch (error) {
+            console.log('logout failed', error.message);
+        }
+    }
+
+    function checkLogin() {
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                navigate('/login');
+            }
+        });
+    }
+
+
+    useEffect(() => {
+        checkLogin();
+    }, [])
+
+
     return (
         <>
             <div className="main-header">
@@ -346,9 +378,9 @@ function Header() {
                                                 Account Setting
                                             </a>
                                             <div className="dropdown-divider" />
-                                            <a className="dropdown-item" href="#">
+                                            <button className="dropdown-item" onClick={logOut}>
                                                 Logout
-                                            </a>
+                                            </button>
                                         </li>
                                     </div>
                                 </ul>
