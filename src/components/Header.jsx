@@ -52,7 +52,7 @@ function Header() {
                                 <i className="gg-menu-right" />
                             </button>
                             <button onClick={toggleSideNav} className="btn btn-toggle sidenav-toggler-x">
-                                <i className="gg-menu-left" />
+                                <i class="fas fa-bars"></i>
                             </button>
                         </div>
                         <button className="topbar-toggler more">

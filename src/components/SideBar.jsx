@@ -1,20 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+
+import { MyContext } from "../App";
 
 function SideBar() {
 
-    const [toggleClass,setToggleClass] = useState(false);
-
-    function addSidebarClass(){
-        setToggleClass(!toggleClass);
-    }
+    const { toggleSideNav } = useContext(MyContext);
 
     return (
         <>
 
-            {console.log(toggleClass,'--------toggleClass---------')}
-
-            <div className={`wrapper side_bar_wrapper ${ toggleClass === true ? "sidebar_minimize":"" }`}>
+            <div>
                 <div className="sidebar" data-background-color="dark">
                     <div className="sidebar-logo">
                         {/* Logo Header */}
@@ -23,11 +19,8 @@ function SideBar() {
                                 Pizza-Fest
                             </Link>
                             <div className="nav-toggle">
-                                <button onClick={addSidebarClass} className="btn btn-toggle xxx">
-                                    <i className="gg-menu-left" />
-                                </button>
-                                <button onClick={addSidebarClass} className="btn btn-toggle sidenav-toggler yyy">
-                                    <i className="gg-menu-left" />
+                                <button onClick={toggleSideNav} className="btn btn-toggle xxx">
+                                    <i class="fas fa-bars"></i>
                                 </button>
                             </div>
                             <button className="topbar-toggler more">
@@ -39,7 +32,7 @@ function SideBar() {
                     <div className="sidebar-wrapper scrollbar scrollbar-inner">
                         <div className="sidebar-content">
                             <ul className="nav nav-secondary">
-                                <li className="nav-item active">
+                                <li className="nav-item active hide_me">
                                     <a
                                         data-bs-toggle="collapse"
                                         href="#dashboard"
@@ -62,34 +55,34 @@ function SideBar() {
                                 </li>
 
                                 <li className="nav-item">
-                                    <NavLink className={(isActive) => isActive ? "active nav-link" : "nav-link"} to="/orders">
+                                    <NavLink className={({isActive}) => isActive ? "active_link nav-link" : "nav-link"} to="/">
                                         <p>Orders</p>
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/products-list" >
+                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/products-list" >
                                         <p>Products</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/approved-order">
+                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/approved-order">
                                         <p>Approve Order</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/cancel-order">
+                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/cancel-order">
                                         <p>Canceled Order</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/best-seller">
+                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/best-seller">
                                         <p>Best Seller</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/site-detail">
+                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/site-detail">
                                         <p>Site Detail</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>

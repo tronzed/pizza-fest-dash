@@ -79,3 +79,11 @@
 .hide_me {
     display: none!important;
 }
+.active_link {
+    background-color: #192e4e;
+    border-left: 2px solid #6d5bff;
+}
+.active_link p {
+    color: #fff;
+    font-weight: 700;
+}

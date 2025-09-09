@@ -1,7 +1,7 @@
 import Header from './Header'
 import SideBar from './SideBar'
 import Footer from './Footer'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import firebase from 'firebase/compat/app';
 import Loader from './Loader';
 
@@ -9,6 +9,13 @@ function Order() {
 
     const [orderData, setOrderData] = useState();
     const [loader, setLoader] = useState(true);
+
+    const [cardOrders, setCardOrders] = useState(0);
+    const [cardApproved, setCardApproved] = useState(0);
+    const [cardCanceled, setCardCanceled] = useState(0);
+    const [cardEarning, setCardEarning] = useState(0);
+
+
 
     const getOrder = async () => {
         const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/orders.json');
@@ -20,6 +27,23 @@ function Order() {
         }))
         setOrderData(data2);
         setLoader(false);
+
+
+        let tempOrders = data2.length;
+        let tempApproved = data2.filter((item) => item.approved === true).length;
+        let tempCanceled = data2.filter((item) => item.approved === false).length;
+        // let tempEarning = data2.cartBox.filter((item) => item.price);
+
+        
+
+        setCardOrders(tempOrders);
+        setCardApproved(tempApproved);
+        setCardCanceled(tempCanceled);
+        // setCardEarning(tempEarning);
+
+
+        console.log(data2,'===============tempEarning=================');
+
     }
 
     const approveOrder = async (id) => {
@@ -80,9 +104,87 @@ function Order() {
                                     </li>
                                 </ul>
                             </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="card card-stats card-round">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-icon">
+                                                    <div class="icon-big text-center icon-primary bubble-shadow-small">
+                                                        <i class="fas fa-users"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-stats ms-3 ms-sm-0">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Orders</p>
+                                                        <h4 class="card-title">{cardOrders}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="card card-stats card-round">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-icon">
+                                                    <div class="icon-big text-center icon-info bubble-shadow-small">
+                                                        <i class="fas fa-user-check"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-stats ms-3 ms-sm-0">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Approved Orders</p>
+                                                        <h4 class="card-title">{cardApproved}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="card card-stats card-round">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-icon">
+                                                    <div class="icon-big text-center icon-success bubble-shadow-small">
+                                                        <i class="fas fa-luggage-cart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-stats ms-3 ms-sm-0">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Canceled Order</p>
+                                                        <h4 class="card-title">{cardCanceled}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3 ">
+                                    <div class="card card-stats card-round">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-icon">
+                                                    <div class="icon-big text-center icon-secondary bubble-shadow-small">
+                                                        <i class="far fa-check-circle"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-stats ms-3 ms-sm-0">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Lifetime Earning</p>
+                                                        <h4 class="card-title">$ 576</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="page-category">
-
-
                                 <div className="card">
 
                                     <div className="card-body table-responsive">
@@ -93,7 +195,7 @@ function Order() {
                                                     <th scope="col">Customer Name</th>
                                                     <th scope="col">Details</th>
                                                     <th scope="col">items</th>
-                                                    <th scope="col">Total</th>
+                                                    {/* <th scope="col">Total</th> */}
                                                     <th scope="col">Actions</th>
                                                 </tr>
                                             </thead>
@@ -128,7 +230,7 @@ function Order() {
                                                                     ))
                                                                 }
                                                                 </td>
-                                                                <td></td>
+                                                                {/* <td></td> */}
                                                                 <td>
                                                                     <div className='button_box'>
 
@@ -143,8 +245,8 @@ function Order() {
 
                                                                             ) : (
                                                                                 <>
-                                                                                    <button class="btn btn-success btn-border" onClick={() => {setLoader(true); approveOrder(item?.firebaseId);}}>Approve</button>
-                                                                                    <button class="btn btn-danger btn-border" onClick={() => {setLoader(true); cancelOrder(item?.firebaseId);}}>Cancel</button>
+                                                                                    <button class="btn btn-success btn-border" onClick={() => { setLoader(true); approveOrder(item?.firebaseId); }}>Approve</button>
+                                                                                    <button class="btn btn-danger btn-border" onClick={() => { setLoader(true); cancelOrder(item?.firebaseId); }}>Cancel</button>
                                                                                 </>
                                                                             )
 

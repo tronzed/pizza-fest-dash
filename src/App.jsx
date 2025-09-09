@@ -25,16 +25,15 @@ function App() {
     setSidebarMove(!sidebarMove);
   }
 
-
   return (
 
-    <div className={sidebarMove === true ? "nav_open" : ""}>
+    <div className={sidebarMove === true ? "nav_open sidebar_minimize" : ""}>
 
       <MyContext.Provider value={{ sidebarMove, setSidebarMove, toggleSideNav }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/orders" element={<Order />} />
+            <Route path="/xx" element={<Home />} />
+            <Route path="/" element={<Order />} />
             <Route path="/products-list" element={<ProductsList />} />
             <Route path="/approved-order" element={<ApprovedOrder />} />
             <Route path="/cancel-order" element={<CancelOrder />} />

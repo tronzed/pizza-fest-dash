@@ -73,7 +73,7 @@ function CancelOrder() {
                                                     <th scope="col">Customer Name</th>
                                                     <th scope="col">Details</th>
                                                     <th scope="col">items</th>
-                                                    <th scope="col">Total</th>
+                                                    {/* <th scope="col">Total</th> */}
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -109,7 +109,7 @@ function CancelOrder() {
 
                                                                 }
                                                                 </td>
-                                                                <td></td>
+                                                                {/* <td></td> */}
                                                             </tr >
                                                         </>
                                                     ))

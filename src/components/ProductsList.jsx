@@ -15,7 +15,12 @@ function ProductsList() {
     const getProduct = async () => {
         const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
         const data = await res.json();
-        const data2 = Object.values(data);
+
+        const data2 = Object.entries(data).map(([key, value]) => ({
+            'firebaseId': key,
+            ...value
+        }))
+
         setProduct(data2);
         setLoader(false);
     }
@@ -28,11 +33,22 @@ function ProductsList() {
             method: 'PATCH',
             header: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
-        }).then(()=>{
+        }).then(() => {
+            getProduct();
+        })
+    }
+
+
+    function deletProduct(id) {
+
+        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${id}.json`, {
+            method: "DELETE"
+        }).then(() => {
             getProduct();
         })
 
     }
+
 
     useEffect(() => {
         getProduct();
@@ -104,7 +120,12 @@ function ProductsList() {
                                                                         />
                                                                     </div>
                                                                 </td>
-                                                                <td><Link to={`/product-edit/${item.id}`} class="btn btn-primary btn-border">Edit</Link></td>
+                                                                <td>
+                                                                    <div className='button_box'>
+                                                                        <Link to={`/product-edit/${item.id}`} class="btn btn-primary btn-border">Edit</Link>
+                                                                        <button onClick={() => deletProduct(item.firebaseId)} class="btn btn-danger btn-border">Delete</button>
+                                                                    </div>
+                                                                </td>
                                                             </tr >
                                                         </>
                                                     ))
