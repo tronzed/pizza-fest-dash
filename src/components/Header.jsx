@@ -1,13 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { MyContext } from '../App';
 
 function Header() {
 
     const { toggleSideNav } = useContext(MyContext);
+
+    const [moreToggle, setMoreToggle] = useState(false);
 
     const navigate = useNavigate();
 
@@ -28,6 +30,12 @@ function Header() {
         });
     }
 
+
+    function moreBtnToggle() {
+        setMoreToggle(!moreToggle)
+    }
+
+
     useEffect(() => {
         checkLogin();
     }, [])
@@ -35,7 +43,7 @@ function Header() {
 
     return (
         <>
-            <div className="main-header">
+            <div className={moreToggle ? "topbar_open main-header" : "main-header"}>
                 <div className="main-header-logo">
                     {/* Logo Header */}
                     <div className="logo-header" data-background-color="dark">
@@ -55,7 +63,7 @@ function Header() {
                                 <i class="fas fa-bars"></i>
                             </button>
                         </div>
-                        <button className="topbar-toggler more">
+                        <button onClick={moreBtnToggle} className="more">
                             <i className="gg-more-vertical-alt" />
                         </button>
                     </div>
@@ -79,7 +87,7 @@ function Header() {
                             </div>
                         </nav>
                         <ul className="navbar-nav topbar-nav ms-md-auto align-items-center">
-                            <li className="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none ">
+                            <li className="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none hide_me">
                                 <a
                                     className="nav-link dropdown-toggle"
                                     data-bs-toggle="dropdown"

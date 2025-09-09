@@ -65,7 +65,7 @@ function ApprovedOrder() {
                             <div className="page-category">
 
 
-                                <div className="card table-responsive">
+                                <div className="card card_box table-responsive">
 
                                     <div className="card-body">
                                         <table className="table table-hover ">

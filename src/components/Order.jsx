@@ -234,11 +234,8 @@ function Order() {
                                                                 </td>
                                                                 {/* <td></td> */}
                                                                 <td>
-                                                                    <span className='th_box'>Action</span>
                                                                     <div className='button_box'>
-
                                                                         {
-
                                                                             item?.approved === true ? (
 
                                                                                 <button class="btn btn-success btn-border">Approved</button>
@@ -252,9 +249,7 @@ function Order() {
                                                                                     <button class="btn btn-danger btn-border" onClick={() => { setLoader(true); cancelOrder(item?.firebaseId); }}>Cancel</button>
                                                                                 </>
                                                                             )
-
                                                                         }
-
                                                                     </div>
                                                                 </td>
                                                             </tr >
@@ -265,7 +260,6 @@ function Order() {
                                         </table>
                                     </div>
                                 </div>
-
 
                             </div>
                         </div>

@@ -99,6 +99,10 @@
     font-weight: 700;
 }
 
+.logo-header .logo {
+    max-width: 90px;
+}
+
 @media screen and (max-width:767px) {
 
     .table,
@@ -138,6 +142,11 @@
 
     .th_box {
         display: block;
+    }
+
+    .table>tbody>tr>td,
+    .table>tbody>tr>th {
+        padding: 8px 15px !important;
     }
 
 }

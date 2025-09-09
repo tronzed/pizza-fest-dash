@@ -75,7 +75,7 @@ function Bestseller() {
                                 <div className='add_box'>
                                     <Link to="/add-product" class="btn btn-primary">Add New</Link>
                                 </div>
-                                <div className="card">
+                                <div className="card card_box">
 
                                     <div className="card-body table-responsive">
                                         <table className="table table-hover">

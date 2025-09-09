@@ -63,7 +63,7 @@ function CancelOrder() {
                             <div className="page-category">
 
 
-                                <div className="card table-responsive">
+                                <div className="card card_box table-responsive">
 
                                     <div className="card-body table-responsive">
                                         <table className="table table-hover ">
