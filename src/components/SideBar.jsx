@@ -55,27 +55,27 @@ function SideBar() {
                                 </li>
 
                                 <li className="nav-item">
-                                    <NavLink className={({isActive}) => isActive ? "active_link nav-link" : "nav-link"} to="/">
+                                    <NavLink onClick={toggleSideNav} className={({isActive}) => isActive ? "active_link nav-link" : "nav-link"} to="/">
                                         <p>Orders</p>
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/products-list" >
+                                    <NavLink onClick={toggleSideNav} className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/products-list" >
                                         <p>Products</p>
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/approved-order">
+                                    <NavLink onClick={toggleSideNav} className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/approved-order">
                                         <p>Approve Order</p>
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/cancel-order">
+                                    <NavLink onClick={toggleSideNav} className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/cancel-order">
                                         <p>Canceled Order</p>
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/best-seller">
+                                    <NavLink onClick={toggleSideNav} className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/best-seller">
                                         <p>Best Seller</p>
                                     </NavLink>
                                 </li>

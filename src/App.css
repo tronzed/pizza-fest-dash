@@ -94,22 +94,50 @@
     display: flex;
 }
 
+.th_box {
+    display: none;
+    font-weight: 700;
+}
 
 @media screen and (max-width:767px) {
 
     .table,
+    .table tbody,
     .table tr,
     .table td {
         display: block;
     }
+
     .table thead {
         display: none;
     }
+
     .table tr {
-        background-color: #f0f0f0;
+        background-color: #fff;
         padding: 15px;
         border-radius: 15px;
         margin-bottom: 15px;
+    }
+
+    .card_box {
+        background-color: transparent;
+        box-shadow: unset;
+    }
+
+    .card_box .card-body {
+        padding: 0;
+    }
+
+    .table tr {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+    }
+
+    .th_box {
+        display: block;
     }
 
 }

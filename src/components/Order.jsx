@@ -34,7 +34,7 @@ function Order() {
         let tempCanceled = data2.filter((item) => item.approved === false).length;
         // let tempEarning = data2.cartBox.filter((item) => item.price);
 
-        
+
 
         setCardOrders(tempOrders);
         setCardApproved(tempApproved);
@@ -42,7 +42,7 @@ function Order() {
         // setCardEarning(tempEarning);
 
 
-        console.log(data2,'===============tempEarning=================');
+        console.log(data2, '===============tempEarning=================');
 
     }
 
@@ -185,7 +185,7 @@ function Order() {
                             </div>
 
                             <div className="page-category">
-                                <div className="card">
+                                <div className="card card_box">
 
                                     <div className="card-body table-responsive">
                                         <table className="table table-hover ">
@@ -204,8 +204,8 @@ function Order() {
                                                     orderData?.map((item, index) => (
                                                         <>
                                                             <tr key={index}>
-                                                                <td>{index + 1}.</td>
-                                                                <td>{item.name}</td>
+                                                                <td><span className='th_box'>#</span> {index + 1}.</td>
+                                                                <td><span className='th_box'>Name</span>{item.name}</td>
                                                                 <td>
                                                                     <div className='row'>
                                                                         <div className='col-sm-6'>
@@ -222,16 +222,19 @@ function Order() {
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td>{
-                                                                    item?.cartBox?.map((box, index) => (
-                                                                        <>
-                                                                            <p>{box?.name}</p>
-                                                                        </>
-                                                                    ))
-                                                                }
+                                                                <td>
+                                                                    <span className='th_box'>Items</span>
+                                                                    {
+                                                                        item?.cartBox?.map((box, index) => (
+                                                                            <>
+                                                                                <p>{box?.name}</p>
+                                                                            </>
+                                                                        ))
+                                                                    }
                                                                 </td>
                                                                 {/* <td></td> */}
                                                                 <td>
+                                                                    <span className='th_box'>Action</span>
                                                                     <div className='button_box'>
 
                                                                         {
