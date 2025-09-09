@@ -19,9 +19,9 @@ function SideBar() {
                     <div className="sidebar-logo">
                         {/* Logo Header */}
                         <div className="logo-header" data-background-color="dark">
-                            <a href="index.html" className="logo">
+                            <Link to="/" className="logo">
                                 Pizza-Fest
-                            </a>
+                            </Link>
                             <div className="nav-toggle">
                                 <button onClick={addSidebarClass} className="btn btn-toggle xxx">
                                     <i className="gg-menu-left" />

@@ -64,7 +64,7 @@ function Header() {
                 {/* Navbar Header */}
                 <nav className="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
                     <div className="container-fluid">
-                        <nav className="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                        <nav className="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex hide_me">
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                     <button type="submit" className="btn btn-search pe-1">
@@ -79,7 +79,7 @@ function Header() {
                             </div>
                         </nav>
                         <ul className="navbar-nav topbar-nav ms-md-auto align-items-center">
-                            <li className="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none">
+                            <li className="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none ">
                                 <a
                                     className="nav-link dropdown-toggle"
                                     data-bs-toggle="dropdown"
@@ -102,7 +102,7 @@ function Header() {
                                     </form>
                                 </ul>
                             </li>
-                            <li className="nav-item topbar-icon dropdown hidden-caret">
+                            <li className="nav-item topbar-icon dropdown hidden-caret hide_me">
                                 <a
                                     className="nav-link dropdown-toggle"
                                     href="#"
@@ -182,7 +182,7 @@ function Header() {
                                     </li>
                                 </ul>
                             </li>
-                            <li className="nav-item topbar-icon dropdown hidden-caret">
+                            <li className="nav-item topbar-icon dropdown hidden-caret hide_me">
                                 <a
                                     className="nav-link dropdown-toggle"
                                     href="#"
@@ -252,7 +252,7 @@ function Header() {
                                     </li>
                                 </ul>
                             </li>
-                            <li className="nav-item topbar-icon dropdown hidden-caret">
+                            <li className="nav-item topbar-icon dropdown hidden-caret hide_me">
                                 <a
                                     className="nav-link"
                                     data-bs-toggle="dropdown"
@@ -338,7 +338,7 @@ function Header() {
                                     </div>
                                     <span className="profile-username">
                                         <span className="op-7">Hi,</span>
-                                        <span className="fw-bold">Hizrian</span>
+                                        <span className="fw-bold">Tanuj</span>
                                     </span>
                                 </a>
                                 <ul className="dropdown-menu dropdown-user animated fadeIn">
@@ -353,7 +353,7 @@ function Header() {
                                                     />
                                                 </div>
                                                 <div className="u-text">
-                                                    <h4>Hizrian</h4>
+                                                    <h4>Tanuj</h4>
                                                     <p className="text-muted">hello@example.com</p>
                                                     <a
                                                         href="profile.html"
@@ -368,12 +368,6 @@ function Header() {
                                             <div className="dropdown-divider" />
                                             <a className="dropdown-item" href="#">
                                                 My Profile
-                                            </a>
-                                            <a className="dropdown-item" href="#">
-                                                My Balance
-                                            </a>
-                                            <a className="dropdown-item" href="#">
-                                                Inbox
                                             </a>
                                             <div className="dropdown-divider" />
                                             <a className="dropdown-item" href="#">
