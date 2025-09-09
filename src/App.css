@@ -77,13 +77,39 @@
 }
 
 .hide_me {
-    display: none!important;
+    display: none !important;
 }
+
 .active_link {
     background-color: #192e4e;
     border-left: 2px solid #6d5bff;
 }
+
 .active_link p {
     color: #fff;
     font-weight: 700;
+}
+
+.button_box {
+    display: flex;
+}
+
+
+@media screen and (max-width:767px) {
+
+    .table,
+    .table tr,
+    .table td {
+        display: block;
+    }
+    .table thead {
+        display: none;
+    }
+    .table tr {
+        background-color: #f0f0f0;
+        padding: 15px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+    }
+
 }

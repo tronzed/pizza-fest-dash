@@ -79,11 +79,6 @@ function SideBar() {
                                         <p>Best Seller</p>
                                     </NavLink>
                                 </li>
-                                <li className="nav-item">
-                                    <NavLink className={ ({isActive}) => isActive ? "active_link nav-link" : "nav-link" } to="/site-detail">
-                                        <p>Site Detail</p>
-                                    </NavLink>
-                                </li>
                             </ul>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { useContext, useEffect } from 'react';
@@ -357,7 +357,7 @@ function Header() {
                                                     <p className="text-muted">hello@example.com</p>
                                                     <a
                                                         href="profile.html"
-                                                        className="btn btn-xs btn-secondary btn-sm"
+                                                        className="btn btn-xs btn-secondary btn-sm hide_me"
                                                     >
                                                         View Profile
                                                     </a>
@@ -366,13 +366,13 @@ function Header() {
                                         </li>
                                         <li>
                                             <div className="dropdown-divider" />
-                                            <a className="dropdown-item" href="#">
+                                            <a className="dropdown-item hide_me" href="#">
                                                 My Profile
                                             </a>
-                                            <div className="dropdown-divider" />
-                                            <a className="dropdown-item" href="#">
+                                            <div className="dropdown-divider hide_me" />
+                                            <Link to="/site-detail" className="dropdown-item">
                                                 Account Setting
-                                            </a>
+                                            </Link>
                                             <div className="dropdown-divider" />
                                             <button className="dropdown-item" onClick={logOut}>
                                                 Logout
