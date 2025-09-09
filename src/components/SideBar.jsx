@@ -23,10 +23,10 @@ function SideBar() {
                                 Pizza-Fest
                             </a>
                             <div className="nav-toggle">
-                                <button onClick={addSidebarClass} className="btn btn-toggle">
+                                <button onClick={addSidebarClass} className="btn btn-toggle xxx">
                                     <i className="gg-menu-left" />
                                 </button>
-                                <button className="btn btn-toggle sidenav-toggler">
+                                <button onClick={addSidebarClass} className="btn btn-toggle sidenav-toggler yyy">
                                     <i className="gg-menu-left" />
                                 </button>
                             </div>

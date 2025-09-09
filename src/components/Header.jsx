@@ -1,9 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
-import { signOut,onAuthStateChanged } from 'firebase/auth';
-import { useEffect } from 'react';
+import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { useContext, useEffect } from 'react';
+
+import { MyContext } from '../App';
 
 function Header() {
+
+    const { toggleSideNav } = useContext(MyContext);
 
     const navigate = useNavigate();
 
@@ -47,7 +51,7 @@ function Header() {
                             <button className="btn btn-toggle toggle-sidebar">
                                 <i className="gg-menu-right" />
                             </button>
-                            <button className="btn btn-toggle sidenav-toggler">
+                            <button onClick={toggleSideNav} className="btn btn-toggle sidenav-toggler-x">
                                 <i className="gg-menu-left" />
                             </button>
                         </div>

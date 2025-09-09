@@ -12,30 +12,44 @@ import SiteDetail from './components/SiteDetail'
 import CloudBox from './components/CloudBox'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import { createContext, useState } from 'react'
+
+export const MyContext = createContext();
 
 function App() {
 
+  const [sidebarMove, setSidebarMove] = useState(false);
+
+
+  function toggleSideNav() {
+    setSidebarMove(!sidebarMove);
+  }
+
+
   return (
-    <>
 
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/orders" element={<Order />} />
-          <Route path="/products-list" element={<ProductsList />} />
-          <Route path="/approved-order" element={<ApprovedOrder />} />
-          <Route path="/cancel-order" element={<CancelOrder />} />
-          <Route path="/add-product" element={<AddProduct />} />
-          <Route path="/best-seller" element={<Bestseller />} />
-          <Route path="/site-detail" element={<SiteDetail />} />
-          <Route path="/up-box" element={<CloudBox />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/product-edit/:id" element={<ProductEdit />} />
-        </Routes>
-      </BrowserRouter>
+    <div className={sidebarMove === true ? "nav_open" : ""}>
 
-    </>
+      <MyContext.Provider value={{ sidebarMove, setSidebarMove, toggleSideNav }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/orders" element={<Order />} />
+            <Route path="/products-list" element={<ProductsList />} />
+            <Route path="/approved-order" element={<ApprovedOrder />} />
+            <Route path="/cancel-order" element={<CancelOrder />} />
+            <Route path="/add-product" element={<AddProduct />} />
+            <Route path="/best-seller" element={<Bestseller />} />
+            <Route path="/site-detail" element={<SiteDetail />} />
+            <Route path="/up-box" element={<CloudBox />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/product-edit/:id" element={<ProductEdit />} />
+          </Routes>
+        </BrowserRouter>
+      </MyContext.Provider>
+
+    </div>
   )
 }
 
