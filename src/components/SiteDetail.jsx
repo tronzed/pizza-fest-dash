@@ -21,6 +21,8 @@ function SiteDetail() {
     const [bannerHeading, setBannerHeading] = useState();
     const [bannerSubHeading, setBannersubHeading] = useState();
 
+    const [baseEditId, setBaseEditId] = useState();
+
     const [editOn, setEditOn] = useState();
 
     const submitStoreDetail = async (e) => {
@@ -46,46 +48,73 @@ function SiteDetail() {
 
         const data = { email, address, twitter, facebook, youTube, linkedin, bannerHeading, bannerSubHeading, logoUploadUrl }
 
-        fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/site_detail.json', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).then(() => {
-            console.log('added');
-            setLoaderShow(false);
-        })
+        if (!editOn) {
+
+            console.log("----------add--------");
+
+            fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/site_detail.json', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(() => {
+                console.log('added');
+                setLoaderShow(false);
+            });
+
+        } else {
+
+            console.log("----------edit--------");
+
+            fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/site_detail/${baseEditId}.json`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(() => {
+                console.log('added');
+                setLoaderShow(false);
+            });
+
+        }
+
     }
 
 
-    const editSubmitStoreDetail = (e) => {
-        e.preventDefault();
-        console.log('====testsetsetsetset====');
-    }
+
 
 
     const getEditData = async () => {
 
-        const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/site_detail/-OZe6lFzzBE2peUm7FV4.json');
+        const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/site_detail.json');
 
         const data = await res.json();
 
+        const data2 = Object.entries(data).map(([key, value]) => ({
+            firebaseId: key,
+            ...value
+        }))
+
+        const base_box = data2.find((item) => item.firebaseId);
+
+        setBaseEditId(base_box.firebaseId);
+
+
         if (data) {
             setEditOn(true);
-            console.log(data, '--------yes deta--------');
         } else {
             setEditOn(false);
-            console.log(data, '--------no deta--------');
         }
 
-        setStoreLogoUrl(data?.logoUploadUrl);
-        setEmail(data?.email);
-        setAddress(data?.address);
-        setTwitter(data?.twitter);
-        setFacebook(data?.facebook);
-        setYouTube(data?.youTube);
-        setLinkedin(data?.linkedin);
-        setBannerHeading(data?.bannerHeading);
-        setBannersubHeading(data?.bannerSubHeading);
+        setStoreLogoUrl(base_box?.logoUploadUrl);
+        setEmail(base_box?.email);
+        setAddress(base_box?.address);
+        setTwitter(base_box?.twitter);
+        setFacebook(base_box?.facebook);
+        setYouTube(base_box?.youTube);
+        setLinkedin(base_box?.linkedin);
+        setBannerHeading(base_box?.bannerHeading);
+        setBannersubHeading(base_box?.bannerSubHeading);
+
+        console.log(base_box, "============data2==============");
 
     }
 
@@ -101,6 +130,8 @@ function SiteDetail() {
                 <SideBar />
                 <div className="main-panel">
                     <Header />
+
+
 
                     <div className="container">
                         <div className="page-inner">
@@ -126,16 +157,28 @@ function SiteDetail() {
                                     <Loader />
                                 )}
 
-                                <form onSubmit={editOn === true ? editSubmitStoreDetail : submitStoreDetail}>
+                                {/* <form onSubmit={editOn === true ? editSubmitStoreDetail : submitStoreDetail}> */}
+                                <form onSubmit={submitStoreDetail}>
                                     <div className="card">
                                         <div className="card-body">
                                             <div className='row'>
                                                 <div className='col-sm-4'>
 
-                                                    <div className="form-group form-inline">
-                                                        <label for="formFile" class="col-form-label">Store Logo</label>
-                                                        <input class="form-control" type="file" id="formFile" onChange={(e) => setStoreLogo(e.target.files[0])} />
-                                                    </div>
+                                                    {storeLogoUrl ?
+
+                                                        (<>
+                                                            <div className='form_logo_box'>
+                                                                <div className='logo_box'>
+                                                                    <img className='img-fluid' src={storeLogoUrl} alt="" />
+                                                                </div>
+                                                                <button className='delete_box'>X</button>
+                                                            </div>
+                                                        </>) : (<>
+                                                            <div className="form-group form-inline">
+                                                                <label for="formFile" class="col-form-label">Store Logo</label>
+                                                                <input class="form-control" type="file" id="formFile" onChange={(e) => setStoreLogo(e.target.files[0])} />
+                                                            </div>
+                                                        </>)}
 
                                                 </div>
                                                 <div className='col-sm-4'>
@@ -194,6 +237,20 @@ function SiteDetail() {
                                                     <div className="form-group form-inline">
                                                         <label for="inlineinput" className="col-form-label">Sub Heading</label>
                                                         <input type="text" className="form-control input-full" id="inlineinput" value={bannerSubHeading} placeholder="Enter Sub Heading" onChange={(e) => setBannersubHeading(e.target.value)} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className='row'>
+                                                <div className='col-sm-12'>
+                                                    <div className="form-group form-inline">
+                                                        <div className="form-check form-switch">
+                                                            <input
+                                                                className="form-check-input"
+                                                                type="checkbox"
+                                                                role="switch"
+                                                            />
+                                                            <label class="form-check-label" for="flexSwitchCheckDefault">Turn Off Site</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

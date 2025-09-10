@@ -106,11 +106,12 @@ function ProductsList() {
                                                     productData?.map((item, index) => (
                                                         <>
                                                             <tr key={index}>
-                                                                <td>{item.id}.</td>
-                                                                <td>{item.name}</td>
-                                                                <td>${item.price}</td>
+                                                                <td><span className='th_box th_no_box'>#</span> {item.id}.</td>
+                                                                <td><span className='th_box'>Product</span> {item.name}</td>
+                                                                <td><span className='th_box'>Price</span> ${item.price}</td>
                                                                 <td>
                                                                     <div className="form-check form-switch">
+                                                                        <span className='th_box'>Best Seller</span>
                                                                         <input
                                                                             onChange={(e) => addBestSeller(e.target.checked, item.id)}
                                                                             checked={item.bestSeller}
@@ -123,7 +124,7 @@ function ProductsList() {
                                                                 <td>
                                                                     <div className='button_box'>
                                                                         <Link to={`/product-edit/${item.id}`} class="btn btn-primary btn-border">Edit</Link>
-                                                                        <button onClick={() => deletProduct(item.firebaseId)} class="btn btn-danger btn-border">Delete</button>
+                                                                        <button onClick={() => {deletProduct(item.firebaseId); setLoader(true);}} class="btn btn-danger btn-border">Delete</button>
                                                                     </div>
                                                                 </td>
                                                             </tr >

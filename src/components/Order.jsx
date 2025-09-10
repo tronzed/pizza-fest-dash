@@ -204,7 +204,7 @@ function Order() {
                                                     orderData?.map((item, index) => (
                                                         <>
                                                             <tr key={index}>
-                                                                <td><span className='th_box'>#</span> {index + 1}.</td>
+                                                                <td><span className='th_box th_no_box'>#</span> {index + 1}.</td>
                                                                 <td><span className='th_box'>Name</span>{item.name}</td>
                                                                 <td>
                                                                     <div className='row'>
