@@ -13,6 +13,7 @@ import CloudBox from './components/CloudBox'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import { createContext, useState } from 'react'
+import ReviewList from './components/ReviewList'
 
 export const MyContext = createContext();
 
@@ -33,6 +34,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/xx" element={<Home />} />
+            <Route path="/review-list" element={<ReviewList />} />
             <Route path="/" element={<Order />} />
             <Route path="/products-list" element={<ProductsList />} />
             <Route path="/approved-order" element={<ApprovedOrder />} />
