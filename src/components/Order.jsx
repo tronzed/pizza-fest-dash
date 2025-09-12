@@ -25,7 +25,7 @@ function Order() {
             'firebaseId': key,
             ...value
         }))
-        setOrderData(data2);
+        setOrderData(data2.reverse());
         setLoader(false);
 
 

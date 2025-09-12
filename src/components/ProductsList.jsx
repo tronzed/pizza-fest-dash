@@ -21,7 +21,7 @@ function ProductsList() {
             ...value
         }))
 
-        setProduct(data2);
+        setProduct(data2.reverse());
         setLoader(false);
     }
 
