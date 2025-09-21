@@ -10,7 +10,6 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyCRlHffWOnboV9dQft_pW2qF3iAiKdzotY",
   authDomain: "pizza-fest-61924.firebaseapp.com",
-  databaseURL: "https://pizza-fest-61924-default-rtdb.firebaseio.com",
   projectId: "pizza-fest-61924",
   storageBucket: "pizza-fest-61924.firebasestorage.app",
   messagingSenderId: "442397432510",

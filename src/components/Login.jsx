@@ -20,6 +20,7 @@ function Login() {
     } catch (error) {
       console.log('login failed', error.message);
     }
+    
   };
 
   return (

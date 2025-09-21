@@ -34,7 +34,67 @@ function ReviewList() {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="page-category">Inner page content goes here</div>
+
+
+                            <div className='review_box_cover'>
+
+                                <div className='row'>
+                                    <div className='col-sm-6'>
+                                        <div class="row row-card-no-pd">
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="card card-stats card-round">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Tanuj Saini</h4>
+                                                        <div className='review_box'>
+                                                            <i className='fas fa-star'></i>
+                                                            <i className='fas fa-star'></i>
+                                                            <i className='fas fa-star'></i>
+                                                            <i className='fas fa-star-half-alt'></i>
+                                                            <i className='far fa-star'></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-9">
+                                                <div class="card card-stats card-round">
+                                                    <div class="card-body">
+                                                        <p class="card-category">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur dolor felis, vel consectetur risus cursus eget. Aenean sodales lorem quis nisl interdum sagittis. Aliquam lobortis, nunc non gravida euismod, neque neque accumsan urna, nec efficitur ante nisl vel nunc. Ut et laoreet orci. Vivamus vestibulum scelerisque quam vel ullamcorper.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col-sm-6'>
+                                        <div class="row row-card-no-pd">
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="card card-stats card-round">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Tanuj Saini</h4>
+                                                        <div className='review_box'>
+                                                            <i className='fas fa-star'></i>
+                                                            <i className='fas fa-star'></i>
+                                                            <i className='fas fa-star'></i>
+                                                            <i className='fas fa-star-half-alt'></i>
+                                                            <i className='far fa-star'></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-9">
+                                                <div class="card card-stats card-round">
+                                                    <div class="card-body">
+                                                        <p class="card-category">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur dolor felis, vel consectetur risus cursus eget. Aenean sodales lorem quis nisl interdum sagittis. Aliquam lobortis, nunc non gravida euismod, neque neque accumsan urna, nec efficitur ante nisl vel nunc. Ut et laoreet orci. Vivamus vestibulum scelerisque quam vel ullamcorper.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
                         </div>
                     </div>
 
