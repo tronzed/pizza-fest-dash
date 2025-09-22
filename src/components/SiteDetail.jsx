@@ -20,9 +20,10 @@ function SiteDetail() {
     const [bannerImgUrl, setBannerImgUrl] = useState(false);
     const [bannerHeading, setBannerHeading] = useState();
     const [bannerSubHeading, setBannersubHeading] = useState();
+ 
+    const [comingSoon, setComingSoon] = useState();
 
     const [baseEditId, setBaseEditId] = useState();
-
     const [editOn, setEditOn] = useState();
 
     const submitStoreDetail = async (e) => {
@@ -46,7 +47,7 @@ function SiteDetail() {
 
         setStoreLogoUrl(logoUploadUrl);
 
-        const data = { email, address, twitter, facebook, youTube, linkedin, bannerHeading, bannerSubHeading, logoUploadUrl }
+        const data = { email, address, twitter, facebook, youTube, linkedin, bannerHeading, bannerSubHeading, logoUploadUrl, comingSoon }
 
         if (!editOn) {
 
@@ -248,6 +249,8 @@ function SiteDetail() {
                                                                 className="form-check-input"
                                                                 type="checkbox"
                                                                 role="switch"
+                                                                value={comingSoon}
+                                                                onChange={(e)=> setComingSoon(e.target.checked)}
                                                             />
                                                             <label class="form-check-label" for="flexSwitchCheckDefault">Turn Off Site</label>
                                                         </div>
